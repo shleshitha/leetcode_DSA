@@ -1,24 +1,17 @@
 class Solution {
 public:
-    bool check(string pat, string s){
-        for(int i=0;i<pat.size();i++){
-            if(pat[i]=='I'&&s[i]>s[i+1])
-            return false;
-            if(pat[i]=='D'&&s[i]<s[i+1])
-            return false;
-        }
-        return true;
-    }
     string smallestNumber(string pattern) {
-        string s;
-        int n=pattern.size();
-        for(int i=1;i<=n+1;i++){
-            s=s+char('0'+i);
+        stack<int>s;
+        string ans;
+        for(int i=1;i<=pattern.size()+1;i++){
+            s.push(i);
+            if(i==pattern.size()+1||pattern[i-1]=='I'){
+                while(!s.empty()){
+                    ans=ans+char('0'+s.top());
+                    s.pop();
+                }
+            }
         }
-        do {
-            if(check(pattern,s))
-            return s;
-        } while (next_permutation(s.begin(), s.end()));
-        return "";
+        return ans;
     }
 };
