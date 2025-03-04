@@ -6,11 +6,13 @@ public:
         return check(v,i+1,sum+pow(3,i),n) || check(v,i+1,sum,n);
     }
     bool checkPowersOfThree(int n) {
-        vector<int>v;
-        for(int i=0;pow(3,i)<=n;i++){
-            v.push_back(i);
-            cout<<i<<" ";
+        int i=16;
+        while(n>0&&i>=0){
+            if(pow(3,i)<=n)
+            n-=pow(3,i);
+            i--;
+            cout<<n<<endl;
         }
-        return check(v,0,0,n);
+        return n==0;
     }
 };
