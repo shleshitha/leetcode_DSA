@@ -1,25 +1,22 @@
 class Solution {
 public:
-    // set<int>prime_numbers={2,3};
-    bool isprime(int n){
-        // if(prime_numbers.find(n)!=prime_numbers.end()) return true;
-        if(n==1) return false;
-        if(n==2||n==3) return true;
-        for(int i=2;i<n;i++){
-            if(n%i==0) return false;
-        }
-        // prime_numbers.insert(n);
-        return true;
-    }
-    int least_multiple(int i, int left){
-        if (left % i == 0) return left;
-        return left + (i - left % i);
-    }
     template<typename T>
     void display(vector<T>v){
         for(int i : v)
         cout<<i<<" ";
         cout<<endl;
+    }
+    bool isprime(int n){
+        if(n==1) return false;
+        if(n==2||n==3) return true;
+        for(int i=2;i<n;i++){
+            if(n%i==0) return false;
+        }
+        return true;
+    }
+    int least_multiple(int i, int left){
+        if (left % i == 0) return left;
+        return left + (i - left % i);
     }
     vector<int> generate_primes(int left,int right){
         vector<bool>v(right-left+1,true);
@@ -29,9 +26,7 @@ public:
             if(isprime(i)){
                 
                 int start=max(i*i,least_multiple(i,left));
-                // cout<<start<<" ";
-                while(start<=right){
-                    
+                while(start<=right){       
                     v[start-left]=false;
                     start+=i;
                 }
