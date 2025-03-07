@@ -11,11 +11,9 @@ public:
         // prime_numbers.insert(n);
         return true;
     }
-    int least_multiple(int x, int left){
-        for(int i=left;i<=left*x;i++){
-            if(i%x==0) return i;
-        }
-        return 0;
+    int least_multiple(int i, int left){
+        if (left % i == 0) return left;
+        return left + (i - left % i);
     }
     template<typename T>
     void display(vector<T>v){
@@ -23,31 +21,33 @@ public:
         cout<<i<<" ";
         cout<<endl;
     }
-    vector<int> generate_primes(int left, int right) {
-    vector<bool> v(right - left + 1, true);
-    
-    // Handle edge case where left == 1
-    if (left == 1) v[0] = false;
-
-    // Apply the segmented sieve
-    for (int i = 2; i * i <= right; i++) {
-        if (isprime(i)) {
-            int start = max(i * i, least_multiple(i, left));
-            for (int j = start; j <= right; j += i) {
-                v[j - left] = false;
+    vector<int> generate_primes(int left,int right){
+        vector<bool>v(right-left+1,true);
+        if(left==1)
+        v[0]=false;
+        for(int i=2;i*i<=right;i++){
+            if(isprime(i)){
+                
+                int start=max(i*i,least_multiple(i,left));
+                // cout<<start<<" ";
+                while(start<=right){
+                    
+                    v[start-left]=false;
+                    start+=i;
+                }
+                cout<<endl;
+            }
+            
+        }
+     
+        vector<int>primes;
+        for(int i=0;i<v.size();i++){
+            if(v[i]){
+                primes.push_back(left+i);
             }
         }
+        return primes;
     }
-
-    // Collect the prime numbers
-    vector<int> primes;
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i]) {
-            primes.push_back(left + i);
-        }
-    }
-    return primes;
-}
     vector<int> closestPrimes(int left, int right) {
         vector<int>primes=generate_primes(left,right);
         display(primes);
