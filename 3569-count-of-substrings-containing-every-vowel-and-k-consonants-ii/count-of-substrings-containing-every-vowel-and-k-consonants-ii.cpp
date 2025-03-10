@@ -17,7 +17,7 @@ public:
         // for(int i : next)
         // cout<<i<<" ";
         // cout<<endl;
-         long long count=0;
+        long long count=0;
         int consonants=0;
         unordered_map<char,int> vowel_freq;
         int left=0;
@@ -30,8 +30,7 @@ public:
                 prev=right;
             }
             
-            if(right>=(5+k-1)){
-                if(vowel_freq.size()==5 and consonants==k)
+            if(vowel_freq.size()==5 and consonants==k)
                     count += next[right]-right;
                 
                 //Move left ptr to right: Shrink window
@@ -40,13 +39,12 @@ public:
                         vowel_freq[word[left]]--;
                         if(vowel_freq[word[left]]==0)
                             vowel_freq.erase(word[left]);
-                    }else
+                    }
+                    else
                         consonants--;
                     left++;//Shrink window
                 }else
                     right++;//Expand window
-            }else
-                right++;//Insufficient window size, hence expand
         }
         return count;
     }
