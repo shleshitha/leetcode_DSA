@@ -9,7 +9,8 @@ public:
     }
     long long repairCars(vector<int>& ranks, int cars) {
         long long ans=0;
-        long long lo=1, hi=pow(10,14);
+        long long lo=1;
+        long long hi=*min_element(ranks.begin(),ranks.end())*cars*long(cars);
         while(lo<=hi){
             long long mid = (lo+hi)/2;
             if(check(ranks,cars,mid)){
