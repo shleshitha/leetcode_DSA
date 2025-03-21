@@ -29,7 +29,7 @@ public:
             q.pop();
 
             // If `curr` is a recipe and can be made, add it to the result
-            if (indegree.count(curr)) {
+            if (find(recipes.begin(),recipes.end(),curr)!=recipes.end()) {
                 result.push_back(curr);
             }
 
