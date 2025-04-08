@@ -3,9 +3,7 @@ public:
     int minimumOperations(vector<int>& nums) {
         int cnt=0;
         reverse(nums.begin(),nums.end());
-        for(int i : nums)
-            cout<<i<<" ";
-        cout<<endl;
+        
         while(!nums.empty()){
             set<int>s;
             if(nums.size()==0)
