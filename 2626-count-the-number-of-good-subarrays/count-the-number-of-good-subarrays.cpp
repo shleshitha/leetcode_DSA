@@ -5,7 +5,6 @@ public:
         int n=nums.size();
         long long cnt=0,ans=0;
         int i=0,j=0;
-        vector<bool>vis(nums.size(),false);
         while(j<n){
            cnt+=mp[nums[j]];
            mp[nums[j]]++;
