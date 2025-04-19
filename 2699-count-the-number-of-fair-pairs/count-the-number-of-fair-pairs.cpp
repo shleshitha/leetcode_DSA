@@ -7,7 +7,7 @@ public:
             int j = lower_bound(nums.begin()+i+1,nums.end(),lower-nums[i])-nums.begin();
             int k = upper_bound(nums.begin()+i+1,nums.end(),upper-nums[i])-nums.begin();
             k--;
-            cout<<j<<" "<<k<<endl;
+            // cout<<j<<" "<<k<<endl;
             if(j>i&&k>i)
             ans+=(k-j)+1;
         }
