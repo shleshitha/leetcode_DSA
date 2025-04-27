@@ -31,16 +31,16 @@ public:
     vector<bool> pathExistenceQueries(int n, vector<int>& nums, int maxDiff, vector<vector<int>>& queries) {
     init(n); 
 
-    vector<pair<int, int>> arr; // (value, index)
-    for (int i = 0; i < n; i++) {
-        arr.push_back({nums[i], i});
-    }
+    // vector<pair<int, int>> arr; // (value, index)
+    // for (int i = 0; i < n; i++) {
+    //     arr.push_back({nums[i], i});
+    // }
 
     // sort(arr.begin(), arr.end());
 
     for (int i = 0; i < n - 1; i++) {
-        if (arr[i + 1].first - arr[i].first <= maxDiff) {
-            unionSet(arr[i].second, arr[i + 1].second);
+        if (nums[i + 1] - nums[i] <= maxDiff) {
+            unionSet(i, i+1);
         }
     }
 
