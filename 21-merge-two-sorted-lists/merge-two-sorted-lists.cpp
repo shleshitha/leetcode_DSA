@@ -19,13 +19,13 @@ public:
                 temp3->next=temp1;
                 temp3=temp3->next;
                 temp1=temp1->next;
-                temp3->next=NULL;
+                // temp3->next=NULL;
             }
             else{
                 temp3->next=temp2;
                 temp3=temp3->next;
                 temp2=temp2->next;
-                temp3->next=NULL;
+                // temp3->next=NULL;
             }
         }
         if(temp1)
