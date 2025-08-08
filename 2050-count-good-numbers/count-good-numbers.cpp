@@ -1,23 +1,19 @@
 class Solution {
 public:
-    const int m = 1e9 + 7;
-    long long myPow(long long x, long long N) {
-        long long ans = 1;
-        x%=m;
-        while (N > 0) {
-            if (N % 2 == 1)
-                ans = (ans *x)%m;
-            x =(x*x)%m;
-            N /= 2;
-        }
-        return ans;
+    int m=1e9+7;
+    int power(int n,long long k){
+        if(k==0) return 1;
+        long long half=power(n,k/2);
+        long long result=(half*half)%m;
+        if(k%2==1)
+        result=(result*n)%m;
+        return result%m;
     }
     int countGoodNumbers(long long n) {
-        long long  a,b;
-        a=b=n/2;
-        if(n%2==1)
-        a++;
-        long long ans=(myPow(5,a)*myPow(4,b))%m;
-        return ans;
+        long long even_places=(n+1)/2;
+        long long odd_places=n/2;
+        long long even=power(5,even_places);
+        long long odd=power(4,odd_places);
+        return (even*odd)%m;
     }
 };
