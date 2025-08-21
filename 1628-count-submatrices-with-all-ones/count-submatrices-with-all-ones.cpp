@@ -12,6 +12,8 @@ public:
                 int curr=mat[i][j];
                 for(int k=i;k>=0;k--){
                     curr=min(curr,mat[k][j]);
+                    if(curr==0)
+                    break;
                     ans+=curr;
                 }
             }
