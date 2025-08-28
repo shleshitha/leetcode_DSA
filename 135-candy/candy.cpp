@@ -1,18 +1,32 @@
 class Solution {
 public:
-    int candy(vector<int>& ratings, int cnt = 0) {
-        int n = ratings.size();
-        vector<int> candies(n, 1);
-
-        for (int i = 1; i < n; i++) 
-            if (ratings[i] > ratings[i - 1])
-                candies[i] = candies[i - 1] + 1;
-        
-        for (int i = n - 1; i > 0; i--) {
-            if (ratings[i - 1] > ratings[i])
-                candies[i - 1] = max(candies[i] + 1, candies[i - 1]);
-            cnt += candies[i - 1];
+    int candy(vector<int>& ratings) {
+        priority_queue<int,vector<int>,greater<int>>mini;
+        map<int,vector<int>>mp;
+        int n=ratings.size();
+        for(int i=0;i<n;i++){
+            mp[ratings[i]].push_back(i);
+            mini.push(ratings[i]);
         }
-        return cnt + candies[n - 1];
+        vector<int>candies(n,0);
+        while(!mini.empty()){
+            int curr=mini.top();
+            mini.pop();
+            auto v=mp[curr];
+            for(int i : v){
+                int maxi=0;
+                if(i-1>=0&&ratings[i-1]<curr){
+                    maxi=max(maxi,candies[i-1]);
+                }
+                if(i+1<n&&ratings[i+1]<curr){
+                    maxi=max(maxi,candies[i+1]);
+                }
+                candies[i]=maxi+1;
+            }
+        }
+        int sum=0;
+        for(int i : candies)
+        sum+=i;
+        return sum;
     }
 };
