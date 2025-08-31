@@ -9,11 +9,11 @@ public:
     //     }
     //     cout<<endl;
     // }
-    void help(vector<vector<char>>&board,vector<vector<char>>&ans,bool rows[9][9],bool cols[9][9],bool grids[9][9],vector<pair<int,int>>&emp, int idx){
+    bool help(vector<vector<char>>&board,bool rows[9][9],bool cols[9][9],bool grids[9][9],vector<pair<int,int>>&emp, int idx){
         if(idx>=emp.size()){
             //  print(board);
-            ans=board;
-            return ;
+            // ans=board;
+            return true;
         }
         
        
@@ -26,14 +26,15 @@ public:
                 rows[x][i-1]=true;
                 cols[y][i-1]=true;
                 grids[grididx][i-1]=true;
-                help(board,ans,rows,cols,grids,emp,idx+1);
+                if(help(board,rows,cols,grids,emp,idx+1))
+                return true;
                 board[x][y]='.';
                 rows[x][i-1]=false;
                 cols[y][i-1]=false;
                 grids[grididx][i-1]=false;
             }
         }
-        return ;
+        return false;
     }
     void solveSudoku(vector<vector<char>>& board) {
         bool rows[9][9];
@@ -53,7 +54,7 @@ public:
                 }
             }
         }
-        vector<vector<char>>temp=board;
-        help(temp,board,rows,cols,grids,emp,0);
+        // vector<vector<char>>temp=board;
+        help(board,rows,cols,grids,emp,0);
     }
 };
