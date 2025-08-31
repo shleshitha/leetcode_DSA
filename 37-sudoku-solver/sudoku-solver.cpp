@@ -1,14 +1,14 @@
 class Solution {
 public:
-    void print(vector<vector<char>>&board)
-    {
-        for(auto i : board){
-            for(auto j : i)
-            cout<<j<<" ";
-            cout<<endl;
-        }
-        cout<<endl;
-    }
+    // void print(vector<vector<char>>&board)
+    // {
+    //     for(auto i : board){
+    //         for(auto j : i)
+    //         cout<<j<<" ";
+    //         cout<<endl;
+    //     }
+    //     cout<<endl;
+    // }
     void help(vector<vector<char>>&board,vector<vector<char>>&ans,bool rows[9][9],bool cols[9][9],bool grids[9][9],vector<pair<int,int>>&emp, int idx){
         if(idx>=emp.size()){
             //  print(board);
@@ -53,12 +53,6 @@ public:
                 }
             }
         }
-        // for(int i=0;i<9;i++){
-
-        //     for(int j=0;j<9;j++)
-        //     cout<<grids[i][j]<<" ";
-        //     cout<<endl;
-        // }
         vector<vector<char>>temp=board;
         help(temp,board,rows,cols,grids,emp,0);
     }
