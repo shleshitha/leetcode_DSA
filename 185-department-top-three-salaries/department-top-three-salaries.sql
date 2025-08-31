@@ -2,14 +2,12 @@
 select d.name as Department ,
     e.name as Employee,
     e.salary
-from (
-    select *,
-        dense_rank() over (
-            partition by departmentId
-            order by salary desc
-        ) as rnk
-    from employee
-) e
+from employee e
 join department d
 on e.departmentid=d.id
-where rnk<=3;
+where (
+    select count(distinct salary)
+    from employee
+    where salary>e.salary
+    and DepartmentId=e.DepartmentId 
+)<3;
