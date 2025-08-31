@@ -12,21 +12,23 @@ public:
     }
     
     void update(int index, int val) {
-        help(0,n-1,index,val,0);
+        update(0,n-1,index,val,0);
     }
     
     int sumRange(int left, int right) {
         return query(0,n-1,left,right,0);
     }
-    void help(int l,int r,int index,int val,int idx){
+    void update(int l,int r,int index,int val,int idx){
         if(l>index||r<index) return;
-        if(l==index&&l==r){
+        if(l==r){
             seg[idx]=val;
             return;
         }
         int mid=(l+r)/2;
-        help(l,mid,index,val,2*idx+1);
-        help(mid+1,r,index,val,2*idx+2);
+        if(index<=mid)
+        update(l,mid,index,val,2*idx+1);
+        else
+        update(mid+1,r,index,val,2*idx+2);
         seg[idx]=seg[2*idx+1]+seg[2*idx+2];
     }
     int query(int l,int r,int left,int right,int idx){
