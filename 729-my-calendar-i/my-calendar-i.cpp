@@ -7,7 +7,7 @@ public:
     
     bool book(int startTime, int endTime) {
         for(auto [l,r] :calender){
-            if((startTime>=l && startTime<r)||(endTime>l&&endTime<=r)||(startTime<=l&&endTime>=r))
+            if(startTime<r && endTime>l)
             return false;
         }
         calender.push_back({startTime,endTime});
