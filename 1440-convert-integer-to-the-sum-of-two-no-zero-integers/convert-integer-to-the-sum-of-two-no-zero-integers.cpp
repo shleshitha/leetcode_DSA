@@ -2,11 +2,14 @@ class Solution {
 public:
     set<int>s;
     bool check (int n){
-        while(n>0){
-            if(n%10==0)
-            return false;
-            n=n/10;
+        if(s.find(n)==s.end()){
+            while(n>0){
+                if(n%10==0)
+                return false;
+                n=n/10;
+            }
         }
+       
         return true;
     }
     vector<int> getNoZeroIntegers(int n) {
