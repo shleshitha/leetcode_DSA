@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void generate(vector<int>& nums,vector<vector<int>>&ans,vector<int>t,int i){
+    void generate(vector<int>& nums,vector<vector<int>>&ans,vector<int>&t,int i){
         if(i>=nums.size()){
             ans.push_back(t);
             return;
