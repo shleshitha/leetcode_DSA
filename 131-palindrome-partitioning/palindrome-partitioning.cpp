@@ -1,9 +1,13 @@
 class Solution {
 public:
     bool check(string s){
-        string t=s;
-        reverse(t.begin(),t.end());
-        return s==t;
+        int n=s.size();
+        int i=0,j=n-1;
+        while(i<n/2 && s[i]==s[j]){
+            i++;
+            j--;
+        }
+        return i==n/2;
     }
     void helper(string s, vector<vector<string>>&ans, vector<string>t, int i,string t2){
         if(i==s.size()){
@@ -18,8 +22,6 @@ public:
                 helper(s,ans,t,j+1,"");
                 t.pop_back();
             }
-            // else
-            // helper(s,ans,t,j+1,t2);
         }
     }
     vector<vector<string>> partition(string s) {
