@@ -5,10 +5,11 @@ public:
             ans.push_back(t);
             return;
         }
-        for(int j=0;j<mp[digits[i]].size();j++){
-            helper(digits,mp,ans,t+mp[digits[i]][j],i+1);
+        vector<char>c=mp[digits[i]];
+        for(int j=0;j<c.size();j++){
+            helper(digits,mp,ans,t+c[j],i+1);
         }
-        
+
     }
     vector<string> letterCombinations(string digits) {
         map<char, vector<char>> mp = {
