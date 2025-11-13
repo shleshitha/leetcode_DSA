@@ -11,7 +11,7 @@ public:
     }
     void helper(string s, vector<vector<string>>&ans, vector<string>t, int i,string t2){
         if(i==s.size()){
-            if(!t.empty()&&t2.empty())
+            
             ans.push_back(t);
             return;
         }
