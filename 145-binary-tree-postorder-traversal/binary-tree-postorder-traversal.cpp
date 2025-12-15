@@ -14,22 +14,18 @@ public:
     vector<int> postorderTraversal(TreeNode* root) {
         vector<int>ans;
         if(root==NULL) return ans;
-        stack<TreeNode*>s1,s2;
+        stack<TreeNode*>s1;
         s1.push(root);
         while(!s1.empty()){
             TreeNode *n=s1.top();
             s1.pop();
-            s2.push(n);
+            ans.push_back(n->val);
             if(n->left)
             s1.push(n->left);
             if(n->right)
             s1.push(n->right);
         }
-        while(!s2.empty()){
-            TreeNode *n=s2.top();
-            s2.pop();
-            ans.push_back(n->val);
-        }
+        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
